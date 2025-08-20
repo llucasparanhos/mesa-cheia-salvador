@@ -69,7 +69,7 @@ export default {
 			},
 			boxShadow: {
 				'warm': 'var(--shadow-warm)',
-				'green': 'var(--shadow-green)'
+				'red': 'var(--shadow-red)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

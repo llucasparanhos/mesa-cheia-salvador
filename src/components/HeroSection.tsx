@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import DonationModal from "@/components/DonationModal";
+
 import { Card } from "@/components/ui/card";
 import { Users, Heart, Target } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
 const HeroSection = () => {
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   return (
     <section className="relative bg-gradient-to-b from-primary/5 to-white py-20">
       <div className="container mx-auto px-4">
@@ -23,7 +27,7 @@ const HeroSection = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" className="group">
+              <Button variant="hero" size="xl" className="group" onClick={() => setIsDonationModalOpen(true)}>
                 Doe Agora
                 <Heart className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
               </Button>
@@ -73,7 +77,7 @@ const HeroSection = () => {
               </div>
             </Card>
             
-            <Card className="absolute -top-6 -right-6 p-4 bg-white shadow-green">
+            <Card className="absolute -top-6 -right-6 p-4 bg-white shadow-red">
               <div className="flex items-center space-x-3">
                 <div className="bg-secondary/10 p-2 rounded-lg">
                   <Users className="h-5 w-5 text-secondary" />
@@ -87,6 +91,11 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      <DonationModal 
+        open={isDonationModalOpen} 
+        onOpenChange={setIsDonationModalOpen} 
+      />
     </section>
   );
 };

@@ -27,7 +27,7 @@ export const ongs: ONG[] = [
       website: "https://alimentasalvador.org.br"
     },
     transparency: "100% das doações são convertidas em refeições e distribuídas diretamente às famílias cadastradas.",
-    image: "/api/placeholder/400/300",
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&h=300&fit=crop",
     featured: true
   },
   {
@@ -42,7 +42,7 @@ export const ongs: ONG[] = [
       website: "https://mesasolidariabahia.org"
     },
     transparency: "Relatórios mensais de distribuição disponíveis no site. Prestação de contas transparente.",
-    image: "/api/placeholder/400/300",
+    image: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=400&h=300&fit=crop",
     featured: true
   },
   {
@@ -56,7 +56,7 @@ export const ongs: ONG[] = [
       email: "info@pratocheiosalvador.org.br"
     },
     transparency: "Auditoria anual independente. Relatórios financeiros públicos trimestralmente.",
-    image: "/api/placeholder/400/300",
+    image: "https://images.unsplash.com/photo-1469307670224-ee31d24b6b9a?w=400&h=300&fit=crop",
     featured: true
   },
   {
@@ -71,7 +71,7 @@ export const ongs: ONG[] = [
       website: "https://bancoalimentosbahia.org.br"
     },
     transparency: "Sistema online de rastreamento de doações. Relatórios de impacto mensais.",
-    image: "/api/placeholder/400/300",
+    image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=300&fit=crop",
     featured: false
   },
   {
@@ -85,7 +85,7 @@ export const ongs: ONG[] = [
       email: "cozinha@dendebahia.org"
     },
     transparency: "Reuniões mensais abertas à comunidade. Prestação de contas participativa.",
-    image: "/api/placeholder/400/300",
+    image: "https://images.unsplash.com/photo-1577303935007-0d306ee638cf?w=400&h=300&fit=crop",
     featured: false
   },
   {
@@ -100,7 +100,7 @@ export const ongs: ONG[] = [
       website: "https://nutrirsalvador.org.br"
     },
     transparency: "Acompanhamento nutricional documentado. Relatórios de crescimento das crianças atendidas.",
-    image: "/api/placeholder/400/300", 
+    image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=400&h=300&fit=crop", 
     featured: false
   }
 ];

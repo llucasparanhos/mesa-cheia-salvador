@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import DonationModal from "@/components/DonationModal";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -34,7 +36,7 @@ const Navigation = () => {
             <Link to="/contato" className="text-foreground hover:text-primary transition-colors">
               Contato
             </Link>
-            <Button variant="donate" size="sm">
+            <Button variant="donate" size="sm" onClick={() => setIsDonationModalOpen(true)}>
               Doe Agora
             </Button>
           </div>
@@ -80,13 +82,18 @@ const Navigation = () => {
               >
                 Contato
               </Link>
-              <Button variant="donate" size="sm" className="self-start">
+              <Button variant="donate" size="sm" className="self-start" onClick={() => setIsDonationModalOpen(true)}>
                 Doe Agora
               </Button>
             </div>
           </div>
         )}
       </div>
+
+      <DonationModal 
+        open={isDonationModalOpen} 
+        onOpenChange={setIsDonationModalOpen} 
+      />
     </nav>
   );
 };
