@@ -141,6 +141,36 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
             </RadioGroup>
           </div>
 
+          {/* Campos do PIX */}
+          {paymentMethod === "pix" && (
+            <div className="space-y-4 p-4 border rounded-lg bg-muted/30">
+              <h4 className="font-semibold text-sm">Dados para PIX</h4>
+              <div className="text-center space-y-4">
+                <div className="bg-white p-4 rounded-lg border">
+                  <div className="w-32 h-32 bg-gray-100 mx-auto rounded-lg flex items-center justify-center mb-3">
+                    <div className="text-xs text-center">
+                      <div className="w-24 h-24 bg-black/10 rounded border-2 border-dashed border-gray-400 flex items-center justify-center">
+                        QR CODE
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Escaneie o QR Code com seu app do banco
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-sm font-semibold mb-2">Ou use a chave PIX:</p>
+                  <div className="bg-gray-50 p-3 rounded border">
+                    <code className="text-sm">pix@mesacheia.org.br</code>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Copie e cole no seu app de pagamento
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Campos do Cartão de Crédito */}
           {paymentMethod === "credit-card" && (
             <div className="space-y-4 p-4 border rounded-lg bg-muted/30">

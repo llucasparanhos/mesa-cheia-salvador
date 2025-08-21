@@ -18,7 +18,7 @@ const HeroSection = () => {
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                 <span className="text-primary">Mesa Cheia</span>
                 <br />
-                <span className="text-primary">Conectando</span> corações
+                <span className="text-foreground">Conectando</span> corações
               </h1>
               <p className="text-xl text-muted-foreground max-w-lg">
                 Facilitamos doações para ONGs que combatem a fome em Salvador. 
