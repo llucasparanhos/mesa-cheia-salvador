@@ -18,7 +18,7 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
   const [amount, setAmount] = useState("50");
   const [customAmount, setCustomAmount] = useState("");
   const [isRecurring, setIsRecurring] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState("credit-card");
+  const [paymentMethod, setPaymentMethod] = useState("");
   const [cardData, setCardData] = useState({
     number: "",
     name: "",
@@ -35,6 +35,15 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
       toast({
         title: "Valor inválido",
         description: "Por favor, insira um valor válido para sua doação.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!paymentMethod) {
+      toast({
+        title: "Método de pagamento não selecionado",
+        description: "Por favor, selecione um método de pagamento.",
         variant: "destructive",
       });
       return;
@@ -58,7 +67,7 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl">
             <Heart className="h-5 w-5 text-primary" />
@@ -233,12 +242,14 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
                 <span>Mensal</span>
               </div>
             )}
-            <div className="flex justify-between text-sm text-muted-foreground">
-              <span>Método:</span>
-              <span>
-                {paymentMethod === "credit-card" ? "Cartão de Crédito" : "PIX"}
-              </span>
-            </div>
+            {paymentMethod && (
+              <div className="flex justify-between text-sm text-muted-foreground">
+                <span>Método:</span>
+                <span>
+                  {paymentMethod === "credit-card" ? "Cartão de Crédito" : "PIX"}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Botão de Doação */}
