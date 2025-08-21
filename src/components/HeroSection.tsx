@@ -18,7 +18,7 @@ const HeroSection = () => {
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                 <span className="text-primary">Mesa Cheia</span>
                 <br />
-                <span className="text-secondary">Conectando</span> corações
+                <span className="text-primary">Conectando</span> corações
               </h1>
               <p className="text-xl text-muted-foreground max-w-lg">
                 Facilitamos doações para ONGs que combatem a fome em Salvador. 
@@ -43,7 +43,7 @@ const HeroSection = () => {
                 <div className="text-sm text-muted-foreground">ONGs Parceiras</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-secondary">500+</div>
+                <div className="text-2xl md:text-3xl font-bold text-primary">500+</div>
                 <div className="text-sm text-muted-foreground">Famílias Atendidas</div>
               </div>
               <div className="text-center">

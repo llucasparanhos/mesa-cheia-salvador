@@ -19,6 +19,12 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
   const [customAmount, setCustomAmount] = useState("");
   const [isRecurring, setIsRecurring] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("credit-card");
+  const [cardData, setCardData] = useState({
+    number: "",
+    name: "",
+    expiry: "",
+    cvv: ""
+  });
 
   const predefinedAmounts = ["10", "25", "50", "100"];
 
@@ -134,6 +140,54 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
               </div>
             </RadioGroup>
           </div>
+
+          {/* Campos do Cartão de Crédito */}
+          {paymentMethod === "credit-card" && (
+            <div className="space-y-4 p-4 border rounded-lg bg-muted/30">
+              <h4 className="font-semibold text-sm">Dados do Cartão</h4>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="col-span-2">
+                  <Label htmlFor="card-number" className="text-xs">Número do Cartão</Label>
+                  <Input
+                    id="card-number"
+                    placeholder="1234 5678 9012 3456"
+                    value={cardData.number}
+                    onChange={(e) => setCardData({...cardData, number: e.target.value})}
+                    maxLength={19}
+                  />
+                </div>
+                <div className="col-span-2">
+                  <Label htmlFor="card-name" className="text-xs">Nome no Cartão</Label>
+                  <Input
+                    id="card-name"
+                    placeholder="Nome como está no cartão"
+                    value={cardData.name}
+                    onChange={(e) => setCardData({...cardData, name: e.target.value})}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="card-expiry" className="text-xs">Validade</Label>
+                  <Input
+                    id="card-expiry"
+                    placeholder="MM/AA"
+                    value={cardData.expiry}
+                    onChange={(e) => setCardData({...cardData, expiry: e.target.value})}
+                    maxLength={5}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="card-cvv" className="text-xs">CVV</Label>
+                  <Input
+                    id="card-cvv"
+                    placeholder="123"
+                    value={cardData.cvv}
+                    onChange={(e) => setCardData({...cardData, cvv: e.target.value})}
+                    maxLength={4}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Resumo */}
           <div className="bg-muted/30 p-4 rounded-lg space-y-2">

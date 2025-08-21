@@ -60,12 +60,72 @@ const Contato = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="max-w-4xl mx-auto space-y-12">
+            {/* Formulário de Contato */}
+            <Card className="shadow-red">
+              <CardHeader>
+                <CardTitle className="text-2xl">Envie sua Mensagem</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Nome *</Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      placeholder="Seu nome completo"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email">E-mail *</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      placeholder="seu@email.com"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Assunto</Label>
+                    <Input
+                      id="subject"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                      placeholder="Assunto da sua mensagem"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Mensagem *</Label>
+                    <Textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      placeholder="Escreva sua mensagem aqui..."
+                      rows={6}
+                      required
+                    />
+                  </div>
+
+                  <Button type="submit" variant="hero" size="lg" className="w-full">
+                    <Send className="h-4 w-4 mr-2" />
+                    Enviar Mensagem
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+
             {/* Informações de Contato */}
             <div className="space-y-8">
               <div>
                 <h2 className="text-2xl font-bold mb-6">Informações de Contato</h2>
-                <div className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-6">
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4">
@@ -129,66 +189,6 @@ const Contato = () => {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Formulário de Contato */}
-            <Card className="shadow-red">
-              <CardHeader>
-                <CardTitle className="text-2xl">Envie sua Mensagem</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Nome *</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      placeholder="Seu nome completo"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email">E-mail *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      placeholder="seu@email.com"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Assunto</Label>
-                    <Input
-                      id="subject"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                      placeholder="Assunto da sua mensagem"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Mensagem *</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      placeholder="Escreva sua mensagem aqui..."
-                      rows={6}
-                      required
-                    />
-                  </div>
-
-                  <Button type="submit" variant="hero" size="lg" className="w-full">
-                    <Send className="h-4 w-4 mr-2" />
-                    Enviar Mensagem
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
           </div>
 
           {/* FAQ Rápido */}
