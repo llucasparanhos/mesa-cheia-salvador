@@ -65,18 +65,6 @@ const HeroSection = () => {
             </div>
             
             {/* Floating Cards */}
-            <Card className="absolute -bottom-6 -left-6 p-4 bg-white shadow-warm">
-              <div className="flex items-center space-x-3">
-                <div className="bg-primary/10 p-2 rounded-lg">
-                  <Target className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">ODS 2</div>
-                  <div className="text-xs text-muted-foreground">Fome Zero</div>
-                </div>
-              </div>
-            </Card>
-            
             <Card className="absolute -top-6 -right-6 p-4 bg-white shadow-red">
               <div className="flex items-center space-x-3">
                 <div className="bg-secondary/10 p-2 rounded-lg">
