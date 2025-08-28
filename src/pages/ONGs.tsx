@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import ONGCard from "@/components/ONGCard";
+import Testimonials from "@/components/Testimonials";
 import { ongs } from "@/data/ongs";
 import { Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -75,6 +76,7 @@ const ONGs = () => {
           )}
         </div>
       </main>
+      <Testimonials />
     </div>
   );
 };
