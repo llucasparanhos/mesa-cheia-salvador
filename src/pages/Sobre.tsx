@@ -1,5 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import TrustSeals from "@/components/TrustSeals";
+import DonationSteps from "@/components/DonationSteps";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Users, Target, Award } from "lucide-react";
@@ -171,6 +174,9 @@ const Sobre = () => {
         </div>
       </main>
       <Testimonials />
+      <FAQ />
+      <TrustSeals />
+      <DonationSteps />
     </div>
   );
 };
