@@ -3,6 +3,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import TrustSeals from "@/components/TrustSeals";
 import DonationSteps from "@/components/DonationSteps";
+import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -256,6 +257,7 @@ const Contato = () => {
       <FAQ />
       <TrustSeals />
       <DonationSteps />
+      <Footer />
     </div>
   );
 };

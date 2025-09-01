@@ -4,6 +4,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import TrustSeals from "@/components/TrustSeals";
 import DonationSteps from "@/components/DonationSteps";
+import Footer from "@/components/Footer";
 import { ongs } from "@/data/ongs";
 import { Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -83,6 +84,7 @@ const ONGs = () => {
       <FAQ />
       <TrustSeals />
       <DonationSteps />
+      <Footer />
     </div>
   );
 };
