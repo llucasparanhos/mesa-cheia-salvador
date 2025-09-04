@@ -3,6 +3,7 @@ import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import DonationModal from "@/components/DonationModal";
+import AccessibilityControls from "@/components/AccessibilityControls";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,18 +37,23 @@ const Navigation = () => {
             <Link to="/contato" className="text-foreground hover:text-primary transition-colors">
               Contato
             </Link>
+            <AccessibilityControls />
             <Button variant="donate" size="sm" onClick={() => setIsDonationModalOpen(true)}>
               Doe Agora
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Mobile Menu Button & Accessibility */}
+          <div className="md:hidden flex items-center gap-2">
+            <AccessibilityControls />
+            <button
+              onClick={toggleMenu}
+              className="p-2 text-foreground hover:text-primary transition-colors"
+              aria-label="Menu de navegação"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}

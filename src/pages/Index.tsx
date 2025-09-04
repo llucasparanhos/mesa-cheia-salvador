@@ -10,8 +10,11 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <a href="#main-content" className="skip-link">
+        Pular para o conteúdo principal
+      </a>
       <Navigation />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <FeaturedONGs />
         <Testimonials />

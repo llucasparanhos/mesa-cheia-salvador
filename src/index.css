@@ -113,4 +113,72 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Accessibility Enhancements */
+  .high-contrast {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --border: 0 0% 0%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 100%;
+  }
+
+  .high-contrast.dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 0 0% 100%;
+    --accent: 0 0% 80%;
+    --accent-foreground: 0 0% 0%;
+  }
+
+  .enhanced-focus *:focus-visible {
+    outline: 3px solid hsl(var(--primary)) !important;
+    outline-offset: 2px !important;
+    border-radius: 4px !important;
+  }
+
+  .reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Skip Link for Screen Readers */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 9999;
+    border: 2px solid hsl(var(--primary));
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* Enhanced Button Focus */
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Ensure text meets contrast ratios */
+  .text-muted-foreground {
+    color: hsl(var(--muted-foreground));
+    opacity: 0.8;
+  }
 }

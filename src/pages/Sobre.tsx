@@ -12,9 +12,12 @@ import { Link } from "react-router-dom";
 const Sobre = () => {
   return (
     <div className="min-h-screen bg-background">
+      <a href="#main-content" className="skip-link">
+        Pular para o conteúdo principal
+      </a>
       <Navigation />
       
-      <main className="py-20">
+      <main id="main-content" className="py-20">
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center space-y-4 mb-16">
