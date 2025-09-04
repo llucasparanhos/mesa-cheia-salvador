@@ -13,6 +13,7 @@ import {
   Eye,
   Focus,
   X,
+  Monitor,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
@@ -75,34 +76,56 @@ const AccessibilityPanel = () => {
     setHighContrast(false);
     setReducedMotion(false);
     setFocusVisible(false);
-    setTheme('system');
+    setTheme('light');
   };
+
+  // Close panel when pressing Escape
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen]);
 
   return (
     <>
       {/* Floating Accessibility Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 z-50 h-12 w-12 p-0 bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl rounded-full"
-        aria-label="Abrir controles de acessibilidade"
+        className="fixed bottom-4 right-4 z-50 h-14 w-14 p-0 bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl rounded-full transition-all duration-200"
+        aria-label={isOpen ? "Fechar controles de acessibilidade" : "Abrir controles de acessibilidade"}
+        aria-expanded={isOpen}
       >
-        <Accessibility className="h-6 w-6 text-white" />
+        {isOpen ? (
+          <X className="h-6 w-6 text-white" />
+        ) : (
+          <Accessibility className="h-6 w-6 text-white" />
+        )}
       </Button>
 
       {/* Accessibility Panel */}
       {isOpen && (
-        <div className="fixed bottom-20 right-4 z-50 w-80 bg-background border-2 border-border rounded-lg shadow-2xl p-6 max-h-96 overflow-y-auto">
+        <div 
+          className="fixed bottom-20 right-4 z-50 w-80 bg-background border-2 border-border rounded-lg shadow-2xl p-6 max-h-96 overflow-y-auto"
+          role="dialog"
+          aria-labelledby="accessibility-title"
+          aria-modal="true"
+        >
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Accessibility className="h-5 w-5 text-primary" />
-                <h3 className="font-semibold text-lg">Acessibilidade</h3>
+                <h3 id="accessibility-title" className="font-semibold text-lg">Acessibilidade</h3>
               </div>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="h-8 w-8 p-0"
+                className="h-8 w-8 p-0 hover:bg-muted"
                 aria-label="Fechar painel"
               >
                 <X className="h-4 w-4" />
@@ -114,15 +137,16 @@ const AccessibilityPanel = () => {
             {/* Theme Controls */}
             <div className="space-y-3">
               <h4 className="text-sm font-medium flex items-center gap-2">
-                <Sun className="h-4 w-4" />
-                Tema
+                <Monitor className="h-4 w-4" />
+                Tema da Página
               </h4>
               <div className="grid grid-cols-3 gap-2">
                 <Button
                   variant={theme === 'light' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setTheme('light')}
-                  className="text-xs"
+                  className="text-xs h-8"
+                  aria-pressed={theme === 'light'}
                 >
                   <Sun className="h-3 w-3 mr-1" />
                   Claro
@@ -131,7 +155,8 @@ const AccessibilityPanel = () => {
                   variant={theme === 'dark' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setTheme('dark')}
-                  className="text-xs"
+                  className="text-xs h-8"
+                  aria-pressed={theme === 'dark'}
                 >
                   <Moon className="h-3 w-3 mr-1" />
                   Escuro
@@ -140,8 +165,10 @@ const AccessibilityPanel = () => {
                   variant={theme === 'system' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setTheme('system')}
-                  className="text-xs"
+                  className="text-xs h-8"
+                  aria-pressed={theme === 'system'}
                 >
+                  <Monitor className="h-3 w-3 mr-1" />
                   Auto
                 </Button>
               </div>
@@ -153,7 +180,7 @@ const AccessibilityPanel = () => {
             <div className="space-y-3">
               <h4 className="text-sm font-medium flex items-center gap-2">
                 <Type className="h-4 w-4" />
-                Tamanho da Fonte ({fontSize}%)
+                Tamanho do Texto ({fontSize}%)
               </h4>
               <div className="flex gap-2 items-center">
                 <Button
@@ -161,8 +188,8 @@ const AccessibilityPanel = () => {
                   size="sm"
                   onClick={decreaseFontSize}
                   disabled={fontSize <= 80}
-                  aria-label="Diminuir fonte"
-                  className="flex-1"
+                  aria-label={`Diminuir fonte. Tamanho atual: ${fontSize}%`}
+                  className="flex-1 h-10"
                 >
                   <ZoomOut className="h-3 w-3 mr-1" />
                   A-
@@ -171,17 +198,18 @@ const AccessibilityPanel = () => {
                   variant="outline"
                   size="sm"
                   onClick={resetFontSize}
-                  className="flex-1 text-xs"
+                  className="flex-1 text-xs h-10"
+                  aria-label="Restaurar tamanho padrão da fonte"
                 >
-                  Normal
+                  Padrão
                 </Button>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={increaseFontSize}
                   disabled={fontSize >= 150}
-                  aria-label="Aumentar fonte"
-                  className="flex-1"
+                  aria-label={`Aumentar fonte. Tamanho atual: ${fontSize}%`}
+                  className="flex-1 h-10"
                 >
                   <ZoomIn className="h-3 w-3 mr-1" />
                   A+
@@ -192,7 +220,7 @@ const AccessibilityPanel = () => {
             <Separator />
 
             {/* Accessibility Options */}
-            <div className="space-y-3">
+            <div className="space-y-4">
               <h4 className="text-sm font-medium">Opções Visuais</h4>
               
               <div className="flex items-center justify-between">
@@ -203,7 +231,7 @@ const AccessibilityPanel = () => {
                 <Switch
                   checked={highContrast}
                   onCheckedChange={setHighContrast}
-                  aria-label="Ativar alto contraste"
+                  aria-label="Ativar modo de alto contraste para melhor legibilidade"
                 />
               </div>
 
@@ -215,19 +243,19 @@ const AccessibilityPanel = () => {
                 <Switch
                   checked={focusVisible}
                   onCheckedChange={setFocusVisible}
-                  aria-label="Ativar foco aprimorado"
+                  aria-label="Melhorar a visibilidade do foco nos elementos"
                 />
               </div>
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Eye className="h-4 w-4" />
-                  <span className="text-sm">Reduzir Movimento</span>
+                  <span className="text-sm">Reduzir Animações</span>
                 </div>
                 <Switch
                   checked={reducedMotion}
                   onCheckedChange={setReducedMotion}
-                  aria-label="Reduzir animações"
+                  aria-label="Reduzir animações e movimento na página"
                 />
               </div>
             </div>
@@ -239,18 +267,21 @@ const AccessibilityPanel = () => {
               variant="outline"
               size="sm"
               onClick={resetAll}
-              className="w-full"
+              className="w-full h-10"
+              aria-label="Redefinir todas as configurações de acessibilidade"
             >
-              Redefinir Tudo
+              🔄 Redefinir Todas as Configurações
             </Button>
 
             {/* Keyboard Shortcuts Info */}
-            <div className="text-xs text-muted-foreground bg-muted/30 p-3 rounded">
-              <p className="font-medium mb-1">Atalhos do Teclado:</p>
-              <p>• Ctrl + (+/-) para zoom</p>
-              <p>• Tab para navegar entre elementos</p>
-              <p>• Enter/Espaço para ativar botões</p>
-              <p>• Esc para fechar painéis</p>
+            <div className="text-xs text-muted-foreground bg-muted/30 p-3 rounded-md">
+              <p className="font-medium mb-2">💡 Dicas de Navegação:</p>
+              <div className="space-y-1">
+                <p>• <kbd className="bg-background px-1 py-0.5 rounded">Ctrl</kbd> + <kbd className="bg-background px-1 py-0.5 rounded">+/-</kbd> para zoom</p>
+                <p>• <kbd className="bg-background px-1 py-0.5 rounded">Tab</kbd> para navegar</p>
+                <p>• <kbd className="bg-background px-1 py-0.5 rounded">Enter</kbd>/<kbd className="bg-background px-1 py-0.5 rounded">Espaço</kbd> para ativar</p>
+                <p>• <kbd className="bg-background px-1 py-0.5 rounded">Esc</kbd> para fechar</p>
+              </div>
             </div>
           </div>
         </div>
