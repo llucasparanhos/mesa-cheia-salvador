@@ -87,12 +87,13 @@ const AccessibilityControls = () => {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="ghost"
+          variant="outline"
           size="sm"
-          className="h-10 w-10 p-0"
+          className="h-10 px-3 bg-background border-2 border-primary/20 hover:bg-primary/10"
           aria-label="Controles de Acessibilidade"
         >
-          <Accessibility className="h-5 w-5" />
+          <Accessibility className="h-4 w-4 mr-2" />
+          <span className="hidden sm:inline">Acessibilidade</span>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80 p-4" align="end">
