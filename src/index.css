@@ -42,10 +42,10 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Mesa Cheia - Custom design tokens - Clean and readable */
-    --gradient-hero: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 72% 51%));
-    --gradient-warm: linear-gradient(180deg, hsl(0 84% 60%), hsl(10 85% 55%));
-    --shadow-warm: 0 10px 30px -10px hsl(0 84% 60% / 0.3);
-    --shadow-red: 0 10px 30px -10px hsl(0 84% 60% / 0.2);
+    --gradient-hero: none;
+    --gradient-warm: none;
+    --shadow-warm: 0 4px 15px -5px hsl(0 84% 60% / 0.1);
+    --shadow-red: 0 4px 15px -5px hsl(0 84% 60% / 0.1);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -89,10 +89,10 @@ All colors MUST be HSL.
     --input: 217.2 32.6% 17.5%;
     --ring: 0 70% 55%;
     
-    --gradient-hero: linear-gradient(135deg, hsl(0 70% 55%), hsl(0 60% 50%));
-    --gradient-warm: linear-gradient(180deg, hsl(0 70% 55%), hsl(10 85% 60%));
-    --shadow-warm: 0 10px 30px -10px hsl(0 70% 55% / 0.4);
-    --shadow-red: 0 10px 30px -10px hsl(0 70% 55% / 0.3);
+    --gradient-hero: none;
+    --gradient-warm: none;
+    --shadow-warm: 0 4px 15px -5px hsl(0 70% 55% / 0.2);
+    --shadow-red: 0 4px 15px -5px hsl(0 70% 55% / 0.1);
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
