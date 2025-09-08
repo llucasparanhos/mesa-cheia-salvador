@@ -52,7 +52,7 @@ const ONGCard = ({ ong, variant = "default" }: ONGCardProps) => {
         </CardContent>
         
         <CardFooter className="p-6 pt-0 flex gap-3">
-          <Button variant="default" size="sm" className="flex-1" onClick={() => setIsDonationModalOpen(true)}>
+          <Button variant="default" size="sm" className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90" onClick={() => setIsDonationModalOpen(true)}>
             Doar Agora
           </Button>
           <Button variant="outline" size="sm" asChild>

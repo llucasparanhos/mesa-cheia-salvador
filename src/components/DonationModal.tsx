@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Heart, CreditCard, Shield, CheckCircle, Share2, Copy, Facebook, Twitter } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { ongs } from "@/data/ongs";
 
 interface DonationModalProps {
   open: boolean;
@@ -15,6 +17,7 @@ interface DonationModalProps {
 }
 
 const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
+  const [selectedOng, setSelectedOng] = useState(ongName || "");
   const [amount, setAmount] = useState("50");
   const [customAmount, setCustomAmount] = useState("");
   const [isRecurring, setIsRecurring] = useState(false);
@@ -38,6 +41,15 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
   const handleDonate = () => {
     const finalAmount = amount === "custom" ? customAmount : amount;
     
+    if (!selectedOng) {
+      toast({
+        title: "ONG não selecionada",
+        description: "Por favor, selecione uma ONG para fazer sua doação.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (!finalAmount || parseFloat(finalAmount) <= 0) {
       toast({
         title: "Valor inválido",
@@ -126,7 +138,7 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
               <>
                 <Heart className="h-5 w-5 text-primary" />
                 Fazer Doação
-                {ongName && <span className="text-base text-muted-foreground">para {ongName}</span>}
+                {selectedOng && <span className="text-base text-muted-foreground">para {selectedOng}</span>}
               </>
             )}
           </DialogTitle>
@@ -134,6 +146,23 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
 
         {!showSuccess ? (
           <div className="space-y-6">
+            {/* Seleção da ONG */}
+            <div className="space-y-3">
+              <Label className="text-base font-semibold">Selecione a ONG</Label>
+              <Select value={selectedOng} onValueChange={setSelectedOng}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Escolha uma ONG para fazer sua doação" />
+                </SelectTrigger>
+                <SelectContent>
+                  {ongs.map((ong) => (
+                    <SelectItem key={ong.id} value={ong.name}>
+                      {ong.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             {/* Valor da Doação */}
             <div className="space-y-3">
               <Label className="text-base font-semibold">Valor da doação</Label>
@@ -312,9 +341,9 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
             {/* Botão de Doação */}
             <Button
               onClick={handleDonate}
-              variant="hero"
+              variant="default"
               size="lg"
-              className="w-full"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
             >
               <Heart className="h-4 w-4 mr-2" />
               Doar R$ {amount === "custom" ? customAmount || "0" : amount}
@@ -377,10 +406,10 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
                     </div>
                   </div>
                   
-                  {ongName && (
+                  {selectedOng && (
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Destinatário:</span>
-                      <span>{ongName}</span>
+                      <span>{selectedOng}</span>
                     </div>
                   )}
                   
@@ -428,9 +457,9 @@ const DonationModal = ({ open, onOpenChange, ongName }: DonationModalProps) => {
 
             <Button
               onClick={handleClose}
-              variant="hero"
+              variant="default"
               size="lg"
-              className="w-full"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
             >
               Fechar
             </Button>
