@@ -27,7 +27,7 @@ const HeroSection = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" className="group" onClick={() => setIsDonationModalOpen(true)}>
+              <Button variant="default" size="xl" className="group bg-primary text-primary-foreground hover:bg-primary/90" onClick={() => setIsDonationModalOpen(true)}>
                 Doe Agora
                 <Heart className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
               </Button>
