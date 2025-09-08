@@ -63,9 +63,9 @@ const ONGDetail = () => {
                     <CarouselContent>
                       {ong.gallery.map((image, index) => (
                         <CarouselItem key={index}>
-                          <img 
-                            src={image} 
-                            alt={`Galeria ${ong.name} - ${index + 1}`}
+                           <img 
+                             src={image} 
+                             alt={`Atividades da ${ong.name}: ${index === 0 ? 'distribuição de alimentos e atendimento às famílias' : index === 1 ? 'voluntários preparando refeições e organizando doações' : index === 2 ? 'comunidade sendo atendida e recebendo alimentos' : 'ações sociais e trabalho comunitário da organização'}`}
                             className="w-full h-80 object-cover"
                           />
                         </CarouselItem>

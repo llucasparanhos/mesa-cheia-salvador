@@ -24,7 +24,7 @@ const ONGCard = ({ ong, variant = "default" }: ONGCardProps) => {
           <div className="relative overflow-hidden rounded-t-lg">
             <img 
               src={ong.image} 
-              alt={`Logo da ${ong.name}`}
+              alt={`Foto das atividades da ONG ${ong.name} - ${ong.description.slice(0, 50)}...`}
               className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />
             {variant === "featured" && (
