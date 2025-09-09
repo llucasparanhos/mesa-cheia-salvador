@@ -26,6 +26,13 @@ export interface ONG {
     adminCosts: string;
     transparency: string;
   };
+  fundraisingGoal: {
+    monthlyGoal: number;
+    currentAmount: number;
+    donorsCount: number;
+    daysLeft: number;
+    description: string;
+  };
 }
 
 export const ongs: ONG[] = [
@@ -61,6 +68,13 @@ export const ongs: ONG[] = [
       donationUsage: "95% direto para alimentação, 5% custos administrativos",
       adminCosts: "Apenas 5% das doações são usadas para custos administrativos",
       transparency: "Relatórios mensais públicos e auditoria anual independente"
+    },
+    fundraisingGoal: {
+      monthlyGoal: 85000,
+      currentAmount: 62450,
+      donorsCount: 342,
+      daysLeft: 12,
+      description: "Meta para alimentar 2.500 famílias este mês com refeições nutritivas"
     }
   },
   {
@@ -94,6 +108,13 @@ export const ongs: ONG[] = [
       donationUsage: "92% direto para alimentação, 8% custos operacionais",
       adminCosts: "8% das doações para estrutura operacional",
       transparency: "Portal transparência online com dados atualizados mensalmente"
+    },
+    fundraisingGoal: {
+      monthlyGoal: 62000,
+      currentAmount: 48900,
+      donorsCount: 256,
+      daysLeft: 18,
+      description: "Campanha para expandir atendimento em novas comunidades do Subúrbio"
     }
   },
   {
@@ -125,6 +146,13 @@ export const ongs: ONG[] = [
       donationUsage: "94% direto para alimentação, 6% custos administrativos",
       adminCosts: "Apenas 6% para gestão e estrutura organizacional",
       transparency: "Auditoria independente anual e relatórios trimestrais públicos"
+    },
+    fundraisingGoal: {
+      monthlyGoal: 120000,
+      currentAmount: 95600,
+      donorsCount: 478,
+      daysLeft: 8,
+      description: "Urgente: Manter funcionamento dos 3 restaurantes populares"
     }
   },
   {
@@ -157,6 +185,13 @@ export const ongs: ONG[] = [
       donationUsage: "97% direto para redistribuição, 3% logística",
       adminCosts: "Apenas 3% para custos de coleta e distribuição",
       transparency: "Sistema online de rastreamento em tempo real"
+    },
+    fundraisingGoal: {
+      monthlyGoal: 95000,
+      currentAmount: 71200,
+      donorsCount: 189,
+      daysLeft: 15,
+      description: "Expandir rede de coleta para reduzir desperdício alimentar"
     }
   },
   {
@@ -188,6 +223,13 @@ export const ongs: ONG[] = [
       donationUsage: "90% direto para alimentação, 10% estrutura",
       adminCosts: "10% para manutenção da cozinha e equipamentos",
       transparency: "Assembleias mensais abertas à comunidade local"
+    },
+    fundraisingGoal: {
+      monthlyGoal: 45000,
+      currentAmount: 32800,
+      donorsCount: 128,
+      daysLeft: 22,
+      description: "Manter tradição culinária baiana nas refeições comunitárias"
     }
   },
   {
@@ -220,6 +262,13 @@ export const ongs: ONG[] = [
       donationUsage: "93% direto para nutrição infantil, 7% gestão",
       adminCosts: "7% para coordenação nutricional especializada",
       transparency: "Relatórios nutricionais semestrais e acompanhamento médico"
+    },
+    fundraisingGoal: {
+      monthlyGoal: 38000,
+      currentAmount: 28500,
+      donorsCount: 95,
+      daysLeft: 19,
+      description: "Garantir alimentação balanceada para crianças em escolas parceiras"
     }
   }
 ];

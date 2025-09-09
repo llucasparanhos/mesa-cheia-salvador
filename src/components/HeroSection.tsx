@@ -4,7 +4,7 @@ import DonationModal from "@/components/DonationModal";
 
 import { Card } from "@/components/ui/card";
 import { Users, Heart, Target } from "lucide-react";
-import heroImage from "@/assets/hero-image.jpg";
+import campaignImage from "@/assets/campaign-image.jpg";
 
 const HeroSection = () => {
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
@@ -16,13 +16,13 @@ const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                <span className="text-primary">Mesa Cheia</span>
+                <span className="text-primary">Sua Doação</span>
                 <br />
-                <span className="text-foreground">Conectando</span> corações
+                <span className="text-foreground">Alimenta</span> <span className="text-primary">Esperança</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-lg">
-                Facilitamos doações para ONGs que combatem a fome em Salvador. 
-                Juntos, podemos garantir que nenhuma mesa fique vazia.
+                Em Salvador, milhares de famílias lutam contra a fome todos os dias. 
+                Sua contribuição pode transformar vidas e encher mesas vazias com amor e dignidade.
               </p>
             </div>
             
@@ -57,8 +57,8 @@ const HeroSection = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src={heroImage} 
-                alt="Voluntários distribuindo alimentos em Salvador"
+                src={campaignImage} 
+                alt="Campanha Mesa Cheia - mãos segurando tigela de comida brasileira tradicional com paisagem de Salvador ao fundo, representando esperança e solidariedade na luta contra a fome"
                 className="w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

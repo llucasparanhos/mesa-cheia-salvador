@@ -8,7 +8,7 @@ import { useParams, Link } from "react-router-dom";
 import { 
   MapPin, Phone, Mail, Globe, ArrowLeft, Heart, CheckCircle,
   Users, Utensils, Calendar, Award, DollarSign, FileText,
-  Shield, TrendingUp, Instagram
+  Shield, TrendingUp, Instagram, Target
 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
@@ -120,6 +120,43 @@ const ONGDetail = () => {
                   </CardContent>
                 </Card>
               </div>
+
+              {/* Fundraising Goal */}
+              <Card className="border-primary/20 bg-gradient-to-r from-primary/5 to-accent/5">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-primary">
+                    <Target className="h-5 w-5 mr-2" />
+                    Meta de Arrecadação - {ong.fundraisingGoal.daysLeft} dias restantes
+                  </CardTitle>
+                  <p className="text-muted-foreground text-sm">{ong.fundraisingGoal.description}</p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span>Arrecadado: R$ {ong.fundraisingGoal.currentAmount.toLocaleString()}</span>
+                      <span>Meta: R$ {ong.fundraisingGoal.monthlyGoal.toLocaleString()}</span>
+                    </div>
+                    <div className="w-full bg-secondary rounded-full h-3">
+                      <div 
+                        className="bg-primary h-3 rounded-full transition-all duration-500" 
+                        style={{ width: `${Math.min((ong.fundraisingGoal.currentAmount / ong.fundraisingGoal.monthlyGoal) * 100, 100)}%` }}
+                      ></div>
+                    </div>
+                    <div className="flex justify-between text-sm text-muted-foreground">
+                      <span>{Math.round((ong.fundraisingGoal.currentAmount / ong.fundraisingGoal.monthlyGoal) * 100)}% da meta</span>
+                      <span>{ong.fundraisingGoal.donorsCount} doadores</span>
+                    </div>
+                  </div>
+                  <div className="bg-white/60 dark:bg-black/20 rounded-lg p-3">
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-primary">
+                        R$ {(ong.fundraisingGoal.monthlyGoal - ong.fundraisingGoal.currentAmount).toLocaleString()}
+                      </div>
+                      <div className="text-xs text-muted-foreground">ainda precisamos arrecadar</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
               {/* Description */}
               <Card>
