@@ -262,9 +262,8 @@ const ONGDetail = () => {
                     </p>
                   </div>
                   <Button 
-                    variant="hero" 
                     size="lg" 
-                    className="w-full"
+                    className="w-full bg-red-600 text-white hover:bg-red-700"
                     onClick={handleDonate}
                   >
                     <Heart className="h-5 w-5 mr-2" />

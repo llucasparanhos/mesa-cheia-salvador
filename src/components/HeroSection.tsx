@@ -16,13 +16,12 @@ const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                <span className="text-primary">Sua Doação</span>
+                <span className="text-primary">Prato cheio,</span>
                 <br />
-                <span className="text-foreground">Alimenta</span> <span className="text-primary">Esperança</span>
+                <span className="text-primary">vida cheia</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-lg">
-                Em Salvador, milhares de famílias lutam contra a fome todos os dias. 
-                Sua contribuição pode transformar vidas e encher mesas vazias com amor e dignidade.
+                Quando a primeira necessidade básica é atendida, cria-se uma base para tudo que vem depois. Um prato cheio é o ponto de partida para saúde, energia, estudo e oportunidades.
               </p>
             </div>
             
