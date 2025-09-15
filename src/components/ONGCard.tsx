@@ -5,6 +5,7 @@ import { MapPin, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import DonationModal from "@/components/DonationModal";
+import ceifarImage from "@/assets/ceifar-ong.jpg";
 
 import { ONG } from "@/data/ongs";
 
@@ -15,6 +16,15 @@ interface ONGCardProps {
 
 const ONGCard = ({ ong, variant = "default" }: ONGCardProps) => {
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+  
+  // Helper function to get the correct image source
+  const getImageSrc = (imageUrl: string) => {
+    if (imageUrl === "/src/assets/ceifar-ong.jpg") {
+      return ceifarImage;
+    }
+    return imageUrl;
+  };
+  
   return (
     <>
       <Card className={`group hover:shadow-lg transition-all duration-300 ${
@@ -23,7 +33,7 @@ const ONGCard = ({ ong, variant = "default" }: ONGCardProps) => {
         <CardHeader className="p-0">
           <div className="relative overflow-hidden rounded-t-lg">
             <img 
-              src={ong.image} 
+              src={getImageSrc(ong.image)} 
               alt={`Foto das atividades da ONG ${ong.name} - ${ong.description.slice(0, 50)}...`}
               className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />

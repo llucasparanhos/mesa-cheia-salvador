@@ -11,10 +11,19 @@ import {
   Shield, TrendingUp, Instagram, Target
 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import ceifarImage from "@/assets/ceifar-ong.jpg";
 
 const ONGDetail = () => {
   const { id } = useParams<{ id: string }>();
   const ong = id ? getOngById(id) : null;
+
+  // Helper function to get the correct image source
+  const getImageSrc = (imageUrl: string) => {
+    if (imageUrl === "/src/assets/ceifar-ong.jpg") {
+      return ceifarImage;
+    }
+    return imageUrl;
+  };
 
   if (!ong) {
     return (
@@ -63,11 +72,11 @@ const ONGDetail = () => {
                     <CarouselContent>
                       {ong.gallery.map((image, index) => (
                         <CarouselItem key={index}>
-                           <img 
-                             src={image} 
-                             alt={`Atividades da ${ong.name}: ${index === 0 ? 'distribuição de alimentos e atendimento às famílias' : index === 1 ? 'voluntários preparando refeições e organizando doações' : index === 2 ? 'comunidade sendo atendida e recebendo alimentos' : 'ações sociais e trabalho comunitário da organização'}`}
-                            className="w-full h-80 object-cover"
-                          />
+                          <img 
+                            src={getImageSrc(image)} 
+                            alt={`Atividades da ${ong.name}: ${index === 0 ? 'distribuição de alimentos e atendimento às famílias' : index === 1 ? 'voluntários preparando refeições e organizando doações' : index === 2 ? 'comunidade sendo atendida e recebendo alimentos' : 'ações sociais e trabalho comunitário da organização'}`}
+                           className="w-full h-80 object-cover"
+                         />
                         </CarouselItem>
                       ))}
                     </CarouselContent>

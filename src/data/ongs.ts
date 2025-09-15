@@ -284,9 +284,9 @@ export const ongs: ONG[] = [
       instagram: "@ceifar.ong"
     },
     transparency: "Atendimento direto à comunidade com prestação de contas via site oficial e redes sociais.",
-    image: "https://images.unsplash.com/photo-1593113598332-cd9b85e1580e?w=400&h=300&fit=crop",
+    image: "/src/assets/ceifar-ong.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1593113598332-cd9b85e1580e?w=800&h=600&fit=crop",
+      "/src/assets/ceifar-ong.jpg",
       "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=800&h=600&fit=crop"
     ],
     featured: false,
