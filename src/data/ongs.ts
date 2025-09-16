@@ -456,5 +456,5 @@ export const ongs: ONG[] = [
   }
 ];
 
-export const getFeaturedOngs = () => ongs.filter(ong => ong.featured);
+export const getFeaturedOngs = () => ongs.filter(ong => ong.featured).slice(0, 3);
 export const getOngById = (id: string) => ongs.find(ong => ong.id === id);
